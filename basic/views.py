@@ -3,6 +3,7 @@ from django.shortcuts import render
 
 
 def index(request):
+
     return HttpResponse("Hello, world. You're at the tsgtest/basic index.")
 
 def temp_test(request):

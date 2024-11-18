@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,5 +9,11 @@
 <p>
     This has come from a template {{ title }}
 </p>
+<p>Staticly loaded</p>
+<img src="{% static 'basic/images/logo_basic_static.svg' %}">
+<img src="static/basic/images/logo_basic_static.svg">
+
+<p>media loaded</p>
+<img src="{{ MEDIA_URL }}/images/logo_media.svg">
 </body>
 </html>
