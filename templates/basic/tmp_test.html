@@ -1,4 +1,6 @@
 {% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+{% get_media_prefix as MEDIA_PREFIX %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +16,6 @@
 <img src="static/basic/images/logo_basic_static.svg">
 
 <p>media loaded</p>
-<img src="{{ MEDIA_URL }}/images/logo_media.svg">
+<img src="{{ MEDIA_PREFIX }}/images/logo_media.svg">
 </body>
 </html>
