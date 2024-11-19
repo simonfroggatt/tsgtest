@@ -36,7 +36,7 @@ def test_send_email(request):
 
         recipient_list = [request.POST['recipient']]
         message_details = _tsg_send_mail(subject, message, recipient_list)
-        return JsonResponse(message_details)
+        return HttpResponse(message_details)
 
 def _tsg_send_mail(subject, message, recipient_list, attachment=None):
     email_from = config('EMAIL_HOST_USER', default='')
