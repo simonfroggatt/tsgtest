@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test sending</title>
+</head>
+<body>
+<form action="{%  url 'send_email' %}" method="post" type="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" name="subject" value="Subject">
+    <input type="text" name="message" value="This is a test message">
+    <input type="email" name="recipient" value="" placeholder="someone@example.com" required>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
