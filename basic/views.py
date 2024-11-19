@@ -1,6 +1,6 @@
 from email.policy import default
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.core.mail import send_mail
 from decouple import config
@@ -36,7 +36,7 @@ def test_send_email(request):
 
         recipient_list = [request.POST['recipient']]
         message_details = _tsg_send_mail(subject, message, recipient_list)
-        return HttpResponse(message_details)
+        return JsonResponse(message_details)
 
 def _tsg_send_mail(subject, message, recipient_list, attachment=None):
     email_from = config('EMAIL_HOST_USER', default='')
@@ -71,5 +71,5 @@ def _tsg_send_mail(subject, message, recipient_list, attachment=None):
         print(f'Message Id: {send_message["id"]}')
     except HttpError as error:
         print(f"An error occurred: {error}")
-        send_message = None
+        send_message = error
     return send_message
