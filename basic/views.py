@@ -10,6 +10,9 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from django.core.mail import EmailMessage
 import base64
+import os
+from django.conf import settings
+
 
 
 def index(request):
@@ -38,7 +41,7 @@ def test_send_email(request):
 def _tsg_send_mail(subject, message, recipient_list, attachment=None):
     email_from = config('EMAIL_HOST_USER', default='')
     SCOPES = ['https://www.googleapis.com/auth/gmail.send']
-    SERVICE_ACCOUNT_FILE = 'medusa-gmail-442210-6eee10050ccf.json'
+    SERVICE_ACCOUNT_FILE = os.path.join(settings.BASE_DIR, "medusa-gmail-442210-6eee10050ccf.json")
 
     credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
     delegated_credentials = credentials.with_subject(email_from)
